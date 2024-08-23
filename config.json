@@ -1,0 +1,13 @@
+{
+    "siteInformation": {
+        "processPort": 3000,
+        "domain": "http://localhost:3000"
+    },
+
+    "SQLInformation": {
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "database": "movieReviews"
+    }
+}

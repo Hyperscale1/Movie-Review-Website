@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=  `${title}` %> | Movie Reviews </title>
+    <link rel="stylesheet" href="<% req.get('host') %>/assets/main.css">
+    <script src="<% req.get('host') %>/assets/main.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="/" class="brand-name">Movie Reviews</a>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/movies">Movies</a></li>
+            <% if (req.session.userId) { %>
+                <li><a href="/user/<%= req.session.userId %>">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+                <% if (req.user.permType === 'admin') { %>
+                    <li><a href="/admin">Admin</a></li>
+                <% } %>
+            <% } else { %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            <% } %>
+        </ul>
+        <div class="navbar-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+</body>
+</html>

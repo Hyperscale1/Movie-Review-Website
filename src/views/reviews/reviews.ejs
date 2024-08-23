@@ -1,0 +1,62 @@
+<%- include('../partials/header', { req: req, title: title}) %>
+
+<body>
+    <div class="movie-header">
+      <h1 class="movie-title"><%= movie.movieTitle %> </h1>
+      <img src="<%= movie.movieImage %>" alt="<%= movie.movieTitle %>" class="movie-img">
+      <!-- <h1 class="movie-title">The Rookie</h1>
+      <img src="/images/titles/theRookie.jpg" alt="Movie Image" class="movie-img"> -->
+    </div>
+    
+    <div class="reviews2-container">
+      <div class="reviews-controls">
+        <select id="sort-by" class="sort-select">
+            <option value="date">Sort by Date</option>
+            <option value="rating">Sort by Rating</option>
+            <option value="title">Sort by Title</option>
+        </select>
+        <input type="text" id="search-box" class="search-box" placeholder="Search reviews...">
+    </div>
+      <div class="searching-contrs">
+      <% reviews.forEach(review => { %>
+        <div class="review-2">
+          <img src="<%= user[0].userImage %>" alt="Profile Image" class="profile-img">
+          <div class="review-content">
+            <% if (review.reviewRating === "1") { %>
+              <div class="stars">★☆☆☆☆</div>
+            <% } else if (review.reviewRating === "2") { %>
+              <div class="stars">★★☆☆☆</div>
+            <% } else if (review.reviewRating === "3") { %>
+              <div class="stars">★★★☆☆</div>
+            <% } else if (review.reviewRating === "4") { %>
+              <div class="stars">★★★★☆</div>
+            <% } else if (review.reviewRating === "5") { %>
+              <div class="stars">★★★★★</div>
+            <% } %>
+            <h2 class="review-title"><%= review.reviewTitle %></h2>
+            <p class="review-description"><%= review.reviewBody %></p>
+            <a href="/user/<%= user[0].userId %>" class="reviewer-name">By: <%= user[0].username %></a>
+
+          </div>
+        </div>
+      <% }) %>
+    </div>
+      <!-- <div class="review-2">
+        <img src="profile1.jpg" alt="Profile Image" class="profile-img">
+        <div class="review-content">
+          <div class="stars">★★★★☆</div>
+          <h2 class="review-title">Amazing Movie!</h2>
+          <p class="review-description">I absolutely loved this movie. The plot was thrilling, and the acting was top-notch. Highly recommend!</p>
+        </div>
+      </div>
+      <div class="review-2">
+        <img src="profile2.jpg" alt="Profile Image" class="profile-img">
+        <div class="review-content">
+          <div class="stars">★★★☆☆</div>
+          <h2 class="review-title">Good, but not great</h2>
+          <p class="review-description">The movie was enjoyable but fell short in certain areas. The storyline was predictable, but the visuals were impressive.</p>
+        </div>
+      </div> -->
+      <!-- Add more reviews here -->
+    </div>
+  </body>

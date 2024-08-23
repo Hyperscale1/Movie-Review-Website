@@ -1,0 +1,42 @@
+<%- include('partials/header', { req: req, title: title}) %>
+
+<body>
+    <div class="movies-container">
+        <h1>All Movies</h1>
+        <div class="movies-list">
+            <% movies.forEach(movie => { %>
+                <div class="movie-item">
+                    <a href="/movies/reviews/<%= movie.movieId %>">
+                        <img src="<%= movie.movieImage %>" alt="<%= movie.movieTitle %>">
+                        <h2><%= movie.movieTitle %></h2>
+                        <p><strong>Classification:</strong> <%= movie.movieClassification %></p>
+                        
+                    </a>
+                </div>
+            <% }) %>
+            <!-- <div class="movie-item">
+                <a href="">
+                    <img src="images/titles/theRookie.jpg" alt="Movie 1">
+                    <h2>The Rookie</h2>
+                    <p><strong>Rating:</strong> PG-13</p>
+                    <div class="star-rating">
+                        ★★★★☆
+                        <span>(4.5/5)</span>
+                    </div>
+                </a>
+            </div> -->
+            <!-- <div class="movie-item">
+                <a href="">
+                    <img src="images/titles/yellowstone.jpg" alt="Movie 2">
+                    <h2>Yellowstone</h2>
+                    <p><strong>Rating:</strong> TV-MA</p>
+                    <div class="star-rating">
+                        ★★★☆☆
+                        <span>(3.5/5)</span>
+                    </div>
+                </a>
+            </div> -->
+            <!-- Add more movie items here -->
+        </div>
+    </div>
+</body>

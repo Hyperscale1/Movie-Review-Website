@@ -1,0 +1,58 @@
+<%- include('partials/header', { req: req, title: title }) %>
+
+<body>
+    <div class="page-container">
+        <aside class="sidebar">
+            <div class="user-profile-header">
+                <img src="<%= user.userImage %>" alt="Profile Picture" class="user-profile-img">
+                <h1 class="user-username"><%= user.username %></h1>
+                <p class="user-role">Permissions: <a style="text-transform: uppercase;"><%= user.permType %></a></p>
+            </div>
+            <div class="staff-functions">
+                <h2 class="user-h2">Staff Functions</h2>
+                <button class="staff-btn">Edit User</button>
+                <button class="staff-btn">Delete User</button>
+                <button class="staff-btn">Ban User</button>
+            </div>
+        </aside>
+        <main class="main-content">
+            <div class="reviews-controls">
+                <select id="sort-by" class="sort-select">
+                    <option value="date">Sort by Date</option>
+                    <option value="rating">Sort by Rating</option>
+                    <option value="title">Sort by Title</option>
+                </select>
+                <input type="text" id="search-box" class="search-box" placeholder="Search reviews...">
+            </div>
+            <div class="user-reviews2-container">
+                <h2 class="user-h2"><%= user.username %>'s Reviews</h2>
+                <% if (reviews.length === 0) { %>
+                    <p class="no-reviews"><%= user.username %> has not written any reviews yet.</p>
+                <% } else { %>
+                    <% reviews.forEach(review => { %>
+                        <a href="/movies/reviews/<%= review.movieId %>" class="user-href">
+                            <div class="user-review-2" data-date="<%= review.date %>">
+                                <div class="user-review-content">
+                                    <% if (review.reviewRating === "1") { %>
+                                        <div class="user-stars">★☆☆☆☆</div>
+                                    <% } else if (review.reviewRating === "2") { %>
+                                        <div class="user-stars">★★☆☆☆</div>
+                                    <% } else if (review.reviewRating === "3") { %>
+                                        <div class="user-stars">★★★☆☆</div>
+                                    <% } else if (review.reviewRating === "4") { %>
+                                        <div class="user-stars">★★★★☆</div>
+                                    <% } else if (review.reviewRating === "5") { %>
+                                        <div class="user-stars">★★★★★</div>
+                                    <% } %>
+                                    <h3 class="user-review-title"><%= review.reviewTitle %></h3>
+                                    <p class="user-review-description"><%= review.reviewBody %></p>
+                                </div>
+                            </div>
+                        </a>
+                    <% }) %>
+                <% } %>
+            </div>
+        </main>
+    </div>
+    <script src="/path/to/your/script.js"></script>
+</body>
